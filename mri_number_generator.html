@@ -61,8 +61,8 @@
   <label for="subjectID">Subject ID:</label>
   <input type="text" id="subjectID" required><br>
 
-  <label for="participantID">Participant ID:</label>
-  <input type="text" id="participantID" required><br>
+  <label for="assessmentID">Assessment ID:</label>
+  <input type="text" id="assessmentID" required><br>
 
   <label for="dateOfScan">Date of Scan:</label>
   <input type="date" id="dateOfScan" required><br>
@@ -78,16 +78,16 @@
 <script>
   document.getElementById("generateButton").addEventListener("click", function () {
     const subjectID = document.getElementById("subjectID").value;
-    const participantID = document.getElementById("participantID").value;
+    const assessmentID = document.getElementById("assessmentID").value;
     const date = document.getElementById("dateOfScan").valueAsDate; // Convert to a Date object
     const mriTime = document.getElementById("mriTime").value;
 
-    if (subjectID && participantID && date && mriTime) {
+    if (subjectID && assessmentID && date && mriTime) {
       // Format the date as YYYYMMDD
       const formattedDate = date.toISOString().slice(0, 10).replace(/-/g, '');
 
       // Create the MRI number
-      const mriNumber = `SUB-${subjectID}-SES-${formattedDate}T${mriTime}00-AID-${participantID}`;
+      const mriNumber = `SUB-${subjectID}-SES-${formattedDate}T${mriTime}00-AID-${assessmentID}`;
       document.getElementById("result").textContent = `MRI Number: ${mriNumber}`;
     } else {
       alert("Please fill in all fields.");
